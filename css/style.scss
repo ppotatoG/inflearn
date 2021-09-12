@@ -125,9 +125,6 @@ section {
             color: #888;
         }
     }
-    [class*="stiky"]{
-        color: red;
-    }
 }
 .footer {
     padding: 5vh 0;
@@ -135,4 +132,26 @@ section {
     color: #fff;
     font-size: 1.6rem;
     text-align: center;
+}
+
+// js 
+
+section {
+    border: 2px solid red;
+    [class*=__stiky]{
+        position: fixed;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+    }
+}
+
+$sections: text, normal, expln, expns;
+
+@each $section in $sections{
+    $i: index($sections, $section);
+
+    #show-scene-#{$i} .section-#{$section} [class*=__stiky]{
+        visibility: visible;
+    }
 }
