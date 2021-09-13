@@ -75,7 +75,7 @@ section {
 }
 .section {
     &-text {
-        &__stiky {
+        &__sticky {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,7 +101,7 @@ section {
             display: block;
             font-size: 1.4rem;
         }
-        &__stiky {
+        &__sticky {
             width: 50vw;
             &::after{
                 display: block;
@@ -138,10 +138,11 @@ section {
 
 section {
     border: 2px solid red;
-    [class*=__stiky]{
+    [class*=__sticky]{
         position: fixed;
-        top: 0;
+        top: 10rem;
         left: 0;
+        height: calc(100vh - 10rem);
         visibility: hidden;
         opacity: 0;
     }
@@ -152,7 +153,7 @@ $sections: text, normal, expln, expns;
 @each $section in $sections{
     $i: index($sections, $section);
 
-    #show-scene-#{$i} .section-#{$section} [class*=__stiky]{
+    #show-scene-#{$i} .section-#{$section} [class*=__sticky]{
         visibility: visible;
     }
 }

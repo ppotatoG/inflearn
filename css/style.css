@@ -100,7 +100,7 @@ section h2 {
   text-align: center;
 }
 
-.section-text__stiky {
+.section-text__sticky {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -130,11 +130,11 @@ section h2 {
   font-size: 1.4rem;
 }
 
-.section-expln__stiky {
+.section-expln__sticky {
   width: 50vw;
 }
 
-.section-expln__stiky::after {
+.section-expln__sticky::after {
   display: block;
   content: "";
   width: 2px;
@@ -167,27 +167,28 @@ section {
   border: 2px solid red;
 }
 
-section [class*=__stiky] {
+section [class*=__sticky] {
   position: fixed;
-  top: 0;
+  top: 10rem;
   left: 0;
+  height: calc(100vh - 10rem);
   visibility: hidden;
   opacity: 0;
 }
 
-#show-scene-1 .section-text [class*=__stiky] {
+#show-scene-1 .section-text [class*=__sticky] {
   visibility: visible;
 }
 
-#show-scene-2 .section-normal [class*=__stiky] {
+#show-scene-2 .section-normal [class*=__sticky] {
   visibility: visible;
 }
 
-#show-scene-3 .section-expln [class*=__stiky] {
+#show-scene-3 .section-expln [class*=__sticky] {
   visibility: visible;
 }
 
-#show-scene-4 .section-expns [class*=__stiky] {
+#show-scene-4 .section-expns [class*=__sticky] {
   visibility: visible;
 }
 /*# sourceMappingURL=style.css.map */
