@@ -12,13 +12,16 @@
             scrollHeight : 0,
             objs : {
                 container : document.querySelector('.section-text'),
-                sticky1 : document.querySelector('.section-text__stiky:nth-child(2)'),
-                sticky2 : document.querySelector('.section-text__stiky:nth-child(3)'),
-                sticky3 : document.querySelector('.section-text__stiky:nth-child(4)'),
-                sticky4 : document.querySelector('.section-text__stiky:nth-child(5)'),
+                sticky1 : document.querySelector('.section-text__sticky:nth-child(2)'),
+                sticky2 : document.querySelector('.section-text__sticky:nth-child(3)'),
+                sticky3 : document.querySelector('.section-text__sticky:nth-child(4)'),
+                sticky4 : document.querySelector('.section-text__sticky:nth-child(5)'),
             },
             values : {
-                opacity : [0, 1]
+                opacity1_in : [0, 1, {start: 0.1, end: 0.2}],
+                opacity1_out : [1, ,0, {start: 0.3, end: 0.4}],
+
+                opacity2 : [0, 1, {start: 0.25, end: 0.45}]
             }
         },
         {
@@ -69,22 +72,50 @@
 
     function calcValues(values, currentYOffset){
         let rv;
-        let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
 
-        rv = scrollRatio * (values[1] - values[0]) + values[0]; 
+        const scrollHeight = sceneInfo[currentScene].scrollHeight;
+        const scrollRatio = currentYOffset / scrollHeight;
+
+        if(values.length === 3){
+            const partScrollStart = values[2].start * scrollHeight;
+            const partScrollEnd = values[2].end * scrollHeight;
+            const partScrollHeight = partScrollEnd - partScrollStart;
+
+            if(currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd){
+                rv = (currentYOffset - partScrollStart ) / partScrollHeight * (values[1] - values[0]) + values[0];
+            }else if(currentYOffset > partScrollStart){
+                rv = values[0];
+            }else if(currentYOffset < partScrollStart) {
+                rv = values[1];
+            }
+
+        }else {
+            rv = scrollRatio * (values[1] - values[0]) + values[0]; 
+        }
 
         return rv;
     }
 
     function playAnimation(){
         const objs = sceneInfo[currentScene].objs;
-        const values = sceneInfo[currentScene].values;
-        const currentYOffset = yOffset - prevScrollHeight;
+		const values = sceneInfo[currentScene].values;
+		const currentYOffset = yOffset - prevScrollHeight;
+		const scrollHeight = sceneInfo[currentScene].scrollHeight;
+		const scrollRatio = currentYOffset / scrollHeight;
 
         switch (currentScene) {
             case 0:
-                let sticky1_in = calcValues(values.opacity, currentYOffset);
-                objs.sticky1.style.opacity = sticky1_in; 
+                const sticky1_in = calcValues(values.opacity1_in, currentYOffset);
+                const sticky1_out = calcValues(values.opacity1_out, currentYOffset);
+
+                if(scrollRatio <= 0.22){
+                    // in
+                    objs.sticky1.style.opacity = sticky1_in; 
+
+                }else {
+                    // out
+                    objs.sticky1.style.opacity = sticky1_out; 
+                }
                 break;
             case 1:
                 // console.log('1');
