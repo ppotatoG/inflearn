@@ -102,7 +102,13 @@ section {
             font-size: 1.4rem;
         }
         &__sticky {
-            width: 50vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 30vh;
+            font-weight: 700;
+            font-size: 3rem;
             &::after{
                 display: block;
                 content: "";
