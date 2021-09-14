@@ -19,7 +19,7 @@
             },
             values : {
                 opacity1_in : [0, 1, {start: 0.1, end: 0.2}],
-                opacity1_out : [1, ,0, {start: 0.3, end: 0.4}],
+                opacity1_out : [1, 0, {start: 0.3, end: 0.4}],
 
                 opacity2 : [0, 1, {start: 0.25, end: 0.45}]
             }
@@ -58,7 +58,6 @@
         }
 
         let totalScrollHeight = 0;
-        yOffset = window.pageYOffset;
 
         for(let i = 0; i < sceneInfo.length; i++){
             totalScrollHeight += sceneInfo[i].scrollHeight;
@@ -83,9 +82,9 @@
 
             if(currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd){
                 rv = (currentYOffset - partScrollStart ) / partScrollHeight * (values[1] - values[0]) + values[0];
-            }else if(currentYOffset > partScrollStart){
+            }else if(currentYOffset < partScrollStart){
                 rv = values[0];
-            }else if(currentYOffset < partScrollStart) {
+            }else if(currentYOffset > partScrollEnd) {
                 rv = values[1];
             }
 
@@ -107,7 +106,6 @@
             case 0:
                 const sticky1_in = calcValues(values.opacity1_in, currentYOffset);
                 const sticky1_out = calcValues(values.opacity1_out, currentYOffset);
-
                 if(scrollRatio <= 0.22){
                     // in
                     objs.sticky1.style.opacity = sticky1_in; 
