@@ -19,7 +19,10 @@
             },
             values : {
                 opacity1_in : [0, 1, {start: 0.1, end: 0.2}],
-                opacity1_out : [1, 0, {start: 0.3, end: 0.4}],
+                translateY1_in : [20, 0, {start: 0.1, end: 0.2}],
+
+                opacity1_out : [1, 0, {start: 0.25, end: 0.3}],
+                translateY1_out : [0, -20, {start: 0.25, end: 0.3}],
 
                 opacity2 : [0, 1, {start: 0.25, end: 0.45}]
             }
@@ -106,13 +109,24 @@
             case 0:
                 const sticky1_in = calcValues(values.opacity1_in, currentYOffset);
                 const sticky1_out = calcValues(values.opacity1_out, currentYOffset);
+
+                const sticky1_translateY1_in = calcValues(values.translateY1_in, currentYOffset);
+                const sticky1_translateY1_out = calcValues(values.translateY1_out, currentYOffset);
+
                 if(scrollRatio <= 0.22){
                     // in
                     objs.sticky1.style.opacity = sticky1_in; 
+                    objs.sticky1.style.transform = `translateY(${sticky1_translateY1_in}%)`;
+
+                    console.log(objs.sticky1.style)
 
                 }else {
                     // out
                     objs.sticky1.style.opacity = sticky1_out; 
+                    objs.sticky1.style.transform = `translateY(${sticky1_translateY1_out}%)`;
+
+                    console.log(sticky1_translateY1_out)
+
                 }
                 break;
             case 1:
