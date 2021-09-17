@@ -13,10 +13,10 @@
             objs : {
                 container : document.querySelector('.section-text'),
 
-                sticky1 : document.querySelector('.section-text__sticky:nth-child(2)'),
-                sticky2 : document.querySelector('.section-text__sticky:nth-child(3)'),
-                sticky3 : document.querySelector('.section-text__sticky:nth-child(4)'),
-                sticky4 : document.querySelector('.section-text__sticky:nth-child(5)'),
+                sticky1 : document.querySelectorAll('.section-text__sticky')[0],
+                sticky2 : document.querySelectorAll('.section-text__sticky')[1],
+                sticky3 : document.querySelectorAll('.section-text__sticky')[2],
+                sticky4 : document.querySelectorAll('.section-text__sticky')[3],
             },
             values : {
                 opacity1_in : [0, 1, {start: 0.1, end: 0.2}],
@@ -55,9 +55,9 @@
             objs : {
                 container : document.querySelector('.section-expln'),
                 
-                sticky1 : document.querySelector('.section-expln__sticky:nth-child(1)'),
-                sticky2 : document.querySelector('.section-expln__sticky:nth-child(2)'),
-                sticky3 : document.querySelector('.section-expln__sticky:nth-child(3)'),
+                sticky1 : document.querySelectorAll('.section-expln__sticky')[0],
+                sticky2 : document.querySelectorAll('.section-expln__sticky')[1],
+                sticky3 : document.querySelectorAll('.section-expln__sticky')[2],
             },
             values : {
                 opacity1_in: [0, 1, { start: 0.15, end: 0.2 }],
