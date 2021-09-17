@@ -17,27 +17,35 @@
                 sticky2 : document.querySelectorAll('.section-text__sticky')[1],
                 sticky3 : document.querySelectorAll('.section-text__sticky')[2],
                 sticky4 : document.querySelectorAll('.section-text__sticky')[3],
+
+                canvas : document.querySelector('.section-text__canvas'),
+                conText : document.querySelector('.section-text__canvas').getContext('2d'),
+                videoImg : []
+
             },
             values : {
-                opacity1_in : [0, 1, {start: 0.1, end: 0.2}],
-                opacity2_in: [0, 1, { start: 0.3, end: 0.4 }],
-                opacity3_in: [0, 1, { start: 0.5, end: 0.6 }],
-                opacity4_in: [0, 1, { start: 0.7, end: 0.8 }],
+                opacity1_in : [0, 1, {start : 0.1, end : 0.2}],
+                opacity2_in : [0, 1, { start : 0.3, end : 0.4 }],
+                opacity3_in : [0, 1, { start : 0.5, end : 0.6 }],
+                opacity4_in : [0, 1, { start : 0.7, end : 0.8 }],
 
-                translateY1_in : [20, 0, {start: 0.1, end: 0.2}],
-                translateY2_in: [20, 0, { start: 0.3, end: 0.4 }],
-                translateY3_in: [20, 0, { start: 0.5, end: 0.6 }],
-                translateY4_in: [20, 0, { start: 0.7, end: 0.8 }],
+                translateY1_in : [20, 0, {start : 0.1, end : 0.2}],
+                translateY2_in : [20, 0, { start : 0.3, end : 0.4 }],
+                translateY3_in : [20, 0, { start : 0.5, end : 0.6 }],
+                translateY4_in : [20, 0, { start : 0.7, end : 0.8 }],
                 
-                opacity1_out : [1, 0, {start: 0.25, end: 0.3}],
-                opacity2_out: [1, 0, { start: 0.45, end: 0.5 }],
-                opacity3_out: [1, 0, { start: 0.65, end: 0.7 }],
-                opacity4_out: [1, 0, { start: 0.85, end: 0.9 }],
+                opacity1_out : [1, 0, {start : 0.25, end : 0.3}],
+                opacity2_out : [1, 0, { start : 0.45, end : 0.5 }],
+                opacity3_out : [1, 0, { start : 0.65, end : 0.7 }],
+                opacity4_out : [1, 0, { start : 0.85, end : 0.9 }],
 
-                translateY1_out : [0, -20, {start: 0.25, end: 0.3}],
-                translateY2_out: [0, -20, { start: 0.45, end: 0.5 }],
-                translateY3_out: [0, -20, { start: 0.65, end: 0.7 }],
-                translateY4_out: [0, -20, { start: 0.85, end: 0.9 }]
+                translateY1_out : [0, -20, {start : 0.25, end : 0.3}],
+                translateY2_out : [0, -20, { start : 0.45, end : 0.5 }],
+                translateY3_out : [0, -20, { start : 0.65, end : 0.7 }],
+                translateY4_out : [0, -20, { start : 0.85, end : 0.9 }],
+
+                videoImgCount : 300,
+                imgSequence : [0, 299]
             }
         },
         {
@@ -60,21 +68,21 @@
                 sticky3 : document.querySelectorAll('.section-expln__sticky')[2],
             },
             values : {
-                opacity1_in: [0, 1, { start: 0.15, end: 0.2 }],
-                opacity2_in: [0, 1, { start: 0.5, end: 0.55 }],
-				opacity3_in: [0, 1, { start: 0.72, end: 0.77 }],
+                opacity1_in : [0, 1, { start : 0.15, end : 0.2 }],
+                opacity2_in : [0, 1, { start : 0.5, end : 0.55 }],
+				opacity3_in : [0, 1, { start : 0.72, end : 0.77 }],
 
-                translateY1_in: [20, 0, { start: 0.15, end: 0.2 }],
-                translateY2_in: [30, 0, { start: 0.5, end: 0.55 }],
-				translateY3_in: [30, 0, { start: 0.72, end: 0.77 }],
+                translateY1_in : [20, 0, { start : 0.15, end : 0.2 }],
+                translateY2_in : [30, 0, { start : 0.5, end : 0.55 }],
+				translateY3_in : [30, 0, { start : 0.72, end : 0.77 }],
                 
-                opacity1_out: [1, 0, { start: 0.3, end: 0.35 }],            
-                opacity2_out: [1, 0, { start: 0.58, end: 0.63 }],
-				opacity3_out: [1, 0, { start: 0.85, end: 0.9 }],
+                opacity1_out : [1, 0, { start : 0.3, end : 0.35 }],            
+                opacity2_out : [1, 0, { start : 0.58, end : 0.63 }],
+				opacity3_out : [1, 0, { start : 0.85, end : 0.9 }],
 
-                translateY1_out: [0, -20, { start: 0.3, end: 0.35 }],
-                translateY2_out: [0, -20, { start: 0.58, end: 0.63 }],
-				translateY3_out: [0, -20, { start: 0.85, end: 0.9 }]
+                translateY1_out : [0, -20, { start : 0.3, end : 0.35 }],
+                translateY2_out : [0, -20, { start : 0.58, end : 0.63 }],
+				translateY3_out : [0, -20, { start : 0.85, end : 0.9 }]
             }
         },
         {
@@ -110,6 +118,17 @@
         }
         document.body.setAttribute('id', `show-scene-${currentScene + 1}`);
     }
+
+    function setCanvasImgs(){
+        let imgEl;
+        for(let i = 0; i < sceneInfo[0].values.videoImgCount; i++){
+            imgEl = new Image();
+            imgEl.src = `./video/001/IMG_${6726 + i}.JPG`;
+
+            sceneInfo[0].objs.videoImg.push(imgEl);
+        }
+    }
+    setCanvasImgs();
 
     function calcValues(values, currentYOffset){
         let rv;
@@ -179,6 +198,10 @@
                     objs.sticky4.style.opacity = calcValues(values.opacity4_out, currentYOffset); 
                     objs.sticky4.style.transform = `translateY(${calcValues(values.translateY4_out, currentYOffset)}%)`;
                 }
+
+                let sequence = Math.round(calcValues(values.imgSequence, currentYOffset));
+
+                objs.conText.drawImage(objs.videoImg[sequence], 0, 0);
 
                 break;
                 
