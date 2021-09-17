@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 10rem;
-    z-index: 10;
+    z-index: 99;
     background-color: #fff;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .3);
     .logo {
@@ -159,7 +159,7 @@ section {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #ddd;
+        visibility: hidden;
     }
 }
 
@@ -171,4 +171,7 @@ $sections: text, normal, expln, expns;
     #show-scene-#{$i} .section-#{$section} [class*=__sticky]{
         visibility: visible;
     }
+}
+#show-scene-1 .section-text [class*=__canvas] {
+    visibility: visible;
 }
