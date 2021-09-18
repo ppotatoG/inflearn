@@ -18,7 +18,7 @@
                 sticky3 : document.querySelectorAll('.section-text__sticky')[2],
                 sticky4 : document.querySelectorAll('.section-text__sticky')[3],
 
-                canvas : document.querySelector('.section-text__canvas'),
+                canvas : document.querySelector('.section-text__canvas-wrap'),
                 conText : document.querySelector('.section-text__canvas').getContext('2d'),
                 videoImg : []
 
@@ -117,6 +117,9 @@
             }
         }
         document.body.setAttribute('id', `show-scene-${currentScene + 1}`);
+
+        const heightRatio = window.innerHeight / 1080 ;
+        sceneInfo[0].objs.canvas.style.transform = `translate(-50%, -50%) scale(${heightRatio})`
     }
 
     function setCanvasImgs(){
@@ -124,7 +127,6 @@
         for(let i = 0; i < sceneInfo[0].values.videoImgCount; i++){
             imgEl = new Image();
             imgEl.src = `./video/001/IMG_${6726 + i}.JPG`;
-
             sceneInfo[0].objs.videoImg.push(imgEl);
         }
     }
@@ -200,8 +202,7 @@
                 }
 
                 let sequence = Math.round(calcValues(values.imgSequence, currentYOffset));
-
-                objs.conText.drawImage(objs.videoImg[sequence], 0, 0);
+				objs.conText.drawImage(objs.videoImg[sequence], 0, 0);
 
                 break;
                 
@@ -270,6 +271,11 @@
         scrollLoop();
     });
 
-    window.addEventListener('load', setLayout);
+    window.addEventListener('load', () => {
+        setLayout();
+        
+        sceneInfo[0].objs.conText.drawImage(sceneInfo[0].objs.videoImg[0], 0, 0);
+    });
+
     window.addEventListener('resize', setLayout);
 })();
