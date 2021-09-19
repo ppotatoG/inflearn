@@ -92,16 +92,31 @@
           box-sizing: border-box;
 }
 
-section {
-  padding: 20vw 2rem;
-}
-
 section h2 {
   font-size: 3rem;
   text-align: center;
 }
 
+.section-text__h2 {
+  font-size: 5rem;
+  position: relative;
+  top: 10rem;
+  z-index: 9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: calc(100vh - 10rem);
+}
+
 .section-text__sticky {
+  font-size: 3rem;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,7 +129,6 @@ section h2 {
   width: 100%;
   height: 30vh;
   font-weight: 700;
-  font-size: 3rem;
 }
 
 .section-normal__h2 {

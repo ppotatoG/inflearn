@@ -67,7 +67,6 @@
     }
 }
 section {
-    padding: 20vw 2rem;
     h2 {
         font-size: 3rem;
         text-align: center;
@@ -75,14 +74,25 @@ section {
 }
 .section {
     &-text {
+        &__h2 {
+            font-size: 5rem;
+            position: relative;
+            top: 10rem;
+            z-index: 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 10rem);
+        }
         &__sticky {
+            font-size: 3rem;
+            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 30vh;
             font-weight: 700;
-            font-size: 3rem;
         }
     }
 

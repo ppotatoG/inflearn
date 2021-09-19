@@ -45,7 +45,8 @@
                 translateY4_out : [0, -20, { start : 0.85, end : 0.9 }],
 
                 videoImgCount : 300,
-                imgSequence : [0, 299]
+                imgSequence : [0, 299],
+                canvasOpacity : [1, 0, {start : 0.9, end : 1}]
             }
         },
         {
@@ -181,8 +182,8 @@
                     objs.sticky2.style.opacity = calcValues(values.opacity2_in, currentYOffset); 
                     objs.sticky2.style.transform = `translateY(${calcValues(values.translateY2_in, currentYOffset)}%)`;
                 }else {
-                    objs.sticky2.style.opacity = calcValues(values.opacity1_out, currentYOffset);
-                    objs.sticky2.style.transform = `translateY(${calcValues(values.translateY1_out, currentYOffset)}%)`;
+                    objs.sticky2.style.opacity = calcValues(values.opacity2_out, currentYOffset);
+                    objs.sticky2.style.transform = `translateY(${calcValues(values.translateY2_out, currentYOffset)}%)`;
                 }
 
                 if (scrollRatio <= 0.62) {
@@ -203,6 +204,7 @@
 
                 let sequence = Math.round(calcValues(values.imgSequence, currentYOffset));
 				objs.conText.drawImage(objs.videoImg[sequence], 0, 0);
+                objs.canvas.style.opacity = calcValues(values.canvasOpacity, currentYOffset);
 
                 break;
                 
