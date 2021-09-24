@@ -223,8 +223,8 @@
                     objs.sticky2.style.opacity = calcValues(values.opacity2_in, currentYOffset); 
                     objs.sticky2.style.transform = `translateY(${calcValues(values.translateY2_in, currentYOffset)}%)`;
                 }else {
-                    objs.sticky2.style.opacity = calcValues(values.opacity1_out, currentYOffset);
-                    objs.sticky2.style.transform = `translateY(${calcValues(values.translateY1_out, currentYOffset)}%)`;
+                    objs.sticky2.style.opacity = calcValues(values.opacity2_out, currentYOffset);
+                    objs.sticky2.style.transform = `translateY(${calcValues(values.translateY2_out, currentYOffset)}%)`;
                 }
 
                 if (scrollRatio <= 0.83) {
