@@ -5,9 +5,11 @@
   width: 100%;
   height: 10rem;
   z-index: 99;
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+          backdrop-filter: saturate(180%) blur(15px);
 }
 
 .header .logo {
@@ -131,6 +133,10 @@ section h2 {
   font-weight: 700;
 }
 
+.section-normal {
+  padding: 40vw 0;
+}
+
 .section-normal__h2 {
   float: left;
 }
@@ -155,18 +161,41 @@ section h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: 70vw;
   height: 30vh;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2rem;
+  position: relative;
 }
 
 .section-expln__sticky::after {
   display: block;
   content: "";
   width: 2px;
-  height: 30vw;
+  height: 10vw;
   background: #454f5d;
+  position: absolute;
+  bottom: 17rem;
+  left: 50%;
+}
+
+.section-expln__h2 {
+  font-size: 5rem;
+  position: relative;
+  top: 10rem;
+  z-index: 9;
+  width: 100%;
+  display: block;
+  height: calc(100vh - 10rem);
+  padding: calc((100vh - 10rem) / 4) 0;
+}
+
+.section-expln__h2::after {
+  display: none;
+}
+
+.section-expln__small {
+  display: block;
 }
 
 .section-expns__h2 {
@@ -231,5 +260,31 @@ section [class*=__canvas-wrap] {
 
 #show-scene-1 .section-text [class*=__canvas-wrap] {
   visibility: visible;
+}
+
+@media screen and (min-width: 768px) {
+  [class*=__sticky] {
+    font-size: 5rem;
+  }
+  .section-normal__text {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .section-expln__sticky {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section-normal__text {
+    font-size: 3rem;
+  }
+  .section-normal__h2 {
+    font-size: 8rem;
+  }
+  .section-expln__sticky {
+    width: 30vw;
+    font-size: 2rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

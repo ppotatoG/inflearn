@@ -5,8 +5,9 @@
     width: 100%;
     height: 10rem;
     z-index: 99;
-    background-color: #fff;
+    background: rgba(255, 255, 255, .2);
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .3);
+    backdrop-filter: saturate(180%) blur(15px);
     .logo {
         padding: 1rem 2rem;
         font: {
@@ -97,6 +98,7 @@ section {
     }
 
     &-normal {
+        padding: 40vw 0;
         &__h2 {
             float: left;
         }
@@ -115,17 +117,37 @@ section {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 70vw;
             height: 30vh;
             font-weight: 700;
-            font-size: 3rem;
+            font-size: 2rem;
+            position: relative;
             &::after{
                 display: block;
                 content: "";
                 width: 2px;
-                height: 30vw;
+                height: 10vw;
                 background: #454f5d;
+                position: absolute;
+                bottom: 17rem;
+                left: 50%;
             }
+        }
+        &__h2{
+            font-size: 5rem;
+            position: relative;
+            top: 10rem;
+            z-index: 9;
+            width: 100%;
+            display: block;
+            height: calc(100vh - 10rem);
+            padding: calc((100vh - 10rem) / 4) 0;
+            &::after{
+                display: none;
+            }
+        }
+        &__small {
+            display: block;
         }
     }
 
@@ -183,4 +205,47 @@ $sections: text, normal, expln, expns;
 }
 #show-scene-1 .section-text [class*=__canvas-wrap] {
     visibility: visible;
+}
+
+@mixin pc {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@include tablet{
+    [class*=__sticky] {
+        font-size: 5rem;
+    }
+    .section-normal__text {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .section-expln {
+        &__sticky {
+            font-size: 3rem;
+        }
+    }
+}
+
+@include pc{
+    .section-normal {
+        &__text {
+            font-size: 3rem;
+        }
+        &__h2 {
+            font-size: 8rem;
+        }
+    }
+    .section-expln {
+        &__sticky {
+            width: 30vw;
+            font-size: 2rem;
+        }
+    }
 }
